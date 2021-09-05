@@ -34,6 +34,7 @@ const twoSum_2 = function(array, targetSum){
 const twoSum_3 = function(array, targetSum){
   let left = 0;
   let right = array.length-1;
+  let answer = new Array();
   while(right > left){
     if (array[right] + array[left] > targetSum){
       right--;
@@ -42,7 +43,8 @@ const twoSum_3 = function(array, targetSum){
       left ++;
     }
     else{
-      return [array[right],array[left]];
+      answer.push(array[right], array[left])
+      return answer;
     }
     }
   
@@ -58,5 +60,7 @@ Sample output
 const array = [3, 5, -4, 8, 11, 1, -1, 6];
 const targetSum = 10;
 console.log(twoSum_1(array,targetSum))
+console.log(typeof(twoSum_1(array,targetSum)))
+
 console.log(twoSum_2(array,targetSum))
 console.log(twoSum_3(array,targetSum))
