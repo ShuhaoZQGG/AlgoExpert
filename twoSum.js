@@ -32,6 +32,7 @@ const twoSum_2 = function(array, targetSum){
 }
 
 const twoSum_3 = function(array, targetSum){
+  array.sort((a,b)=> a-b);
   let left = 0;
   let right = array.length-1;
   let answer = new Array();
@@ -43,7 +44,7 @@ const twoSum_3 = function(array, targetSum){
       left ++;
     }
     else{
-      answer.push(array[right], array[left])
+      answer.push(array[left],array[right])
       return answer;
     }
     }
