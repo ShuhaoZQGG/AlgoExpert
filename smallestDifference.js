@@ -20,10 +20,9 @@ const smallestDifference = function(arrayOne, arrayTwo){
   // [15, 17, 26, 134, 135]
   let i = 0;
   let j = 0;
-  let oneLength = arrayOne.length;
-  let twoLength = arrayTwo.length;
+  
 
-  while(i < oneLength && j < twoLength){
+  while(i < arrayOne.length && j < arrayTwo.length){
     if (Math.abs(arrayOne[i] - arrayTwo[j]) < smallestDifference){
       smallestDifference = Math.abs(arrayOne[i] - arrayTwo[j]);
       min1 = arrayOne[i];
