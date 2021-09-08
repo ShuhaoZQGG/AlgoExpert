@@ -62,3 +62,10 @@ console.log(getNthFib_3(4));
 console.log(getNthFib_3(5));
 console.log(getNthFib_3(6));
 console.log(getNthFib_3(7));
+
+//test speed
+console.log('----')
+//console.log(getNthFib(99));
+//recursion too slow
+console.log(getNthFib_2(89));
+console.log(getNthFib_3(999));
