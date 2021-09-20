@@ -13,7 +13,7 @@
 const levelOfDepth = function(array){
   return array[0] ? Math.max(...array.map(levelOfDepth)) + 1 : 0
 }
-let n = 1;
+
 const productSum = function(array, n = 1){
   let sum = 0;
 
