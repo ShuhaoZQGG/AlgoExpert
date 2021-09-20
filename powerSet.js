@@ -30,3 +30,17 @@ function powerset(inputArray) {
 exports.powerset = powerset;
 
 console.log(powerset([1,2,3,4]))
+
+const powerset_answer = function(array){
+  const subsets = [[]];
+  for (const ele of array) {
+    const length = subsets.length;
+    for (let i = 0; i < length; i++) {
+      const currentSubset = subsets[i];
+      subsets.push(currentSubset.concat(ele));
+    }
+  }
+  return subsets;
+}
+
+console.log(powerset_answer([1,2,3,4]))
