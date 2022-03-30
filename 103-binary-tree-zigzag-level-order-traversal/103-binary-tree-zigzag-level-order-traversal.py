@@ -23,7 +23,7 @@ class Solution:
             s2.append(root.right)
         if level:
           res.append(level)
-          level = []
+        level = []
         while s2:
           root = s2.pop()
           level.append(root.val)
@@ -33,5 +33,5 @@ class Solution:
             s1.append(root.left)
         if level != []:
           res.append(level)
-          level = []
+        level = []
       return res
