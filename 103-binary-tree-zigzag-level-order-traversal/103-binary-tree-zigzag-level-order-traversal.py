@@ -15,22 +15,22 @@ class Solution:
       level = []
       while s1 or s2:
         while s1:
-          root = s1.pop()
-          level.append(root.val)
-          if root.left:
-            s2.append(root.left)
-          if root.right:
-            s2.append(root.right)
+          node = s1.pop()
+          level.append(node.val)
+          if node.left:
+            s2.append(node.left)
+          if node.right:
+            s2.append(node.right)
         if level:
           res.append(level)
         level = []
         while s2:
-          root = s2.pop()
-          level.append(root.val)
-          if root.right:
-            s1.append(root.right)
-          if root.left:
-            s1.append(root.left)
+          node = s2.pop()
+          level.append(node.val)
+          if node.right:
+            s1.append(node.right)
+          if node.left:
+            s1.append(node.left)
         if level != []:
           res.append(level)
         level = []
