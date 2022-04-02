@@ -9,43 +9,22 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
+        stack = []
+        x = y = pred = None
         
-        def swap(nums):
-          x = y = None
-          for i in range(len(nums) - 1):
-            if nums[i+1] < nums[i]:
-              y = nums[i+1]
-              if x is None:
-                x = nums[i]
-              else:
-                break
-          return x, y
-        
-        
-        
-        def inorderTraversal(root):
-          res = []
-          stack = []
-          while stack or root:
-            if root:
-              stack.append(root)
-              root = root.left
+        while stack or root:
+          while root:
+            stack.append(root)
+            root = root.left
+          root = stack.pop()
+          if pred and root.val < pred.val:
+            y = root
+            if x is None:
+              x = pred
             else:
-              root = stack.pop()
-              res.append(root.val)
-              root = root.right
-          return res
-        
-        def recover(root, x, y, count):
-          if root:
-            if root.val == x or root.val == y:
-              root.val = y if root.val == x else x
-              count -= 1
-              if count == 0:
-                return
-            recover(root.left, x, y, count)
-            recover(root.right, x, y, count)
-            
-        nums = inorderTraversal(root)
-        x, y = swap(nums)
-        recover(root, x, y, 2)
+              break
+              
+          pred = root
+          root = root.right
+          
+        x.val, y.val = y.val, x.val
