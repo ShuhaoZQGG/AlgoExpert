@@ -8,13 +8,18 @@ class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:        
         if not root:
           return 0
-        if not root.left and not root.right:
-          return 1
-        
-        minDep = float(inf)
-        for c in [root.left, root.right]:
+        else:
+          stack, minDep = [(1, root),], float(inf)
+          
+        while stack:
+          depth, node = stack.pop()
+          if not any([node.left, node.right]):
+            minDep = min(depth, minDep)
+            
+          for c in [node.left, node.right]:
             if c:
-                minDep = min(self.minDepth(c), minDep)
+              stack.append((depth + 1, c))
+          
         
-        return minDep + 1
+        return minDep
           
