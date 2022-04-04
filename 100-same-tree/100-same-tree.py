@@ -19,8 +19,6 @@ class Solution:
         
         resP = traversal(p, [])
         resQ = traversal(q, [])
-        print(resP)
-        print(resQ)
         return resP == resQ
         
         
