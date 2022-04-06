@@ -3,8 +3,8 @@ class Solution:
         hashmap = dict()
         for i in range(len(nums)):
           if target - nums[i] in hashmap:
-            return [hashmap[target - nums[i]][0], i]
-          hashmap[nums[i]] = (i, target - nums[i])
+            return [hashmap[target - nums[i]], i]
+          hashmap[nums[i]] = i
           
         
         
