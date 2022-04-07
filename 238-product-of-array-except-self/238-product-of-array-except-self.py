@@ -17,12 +17,10 @@ class Solution:
           if nums[i] != 0:
             non_zero_product *= nums[i]
           product *= nums[i]
-        PRODUCT = product
-        NON_ZERO_PRODUCT = non_zero_product
         for i in range(len(nums)):
           if nums[i] == 0:
-            nums[i] = NON_ZERO_PRODUCT
+            nums[i] = non_zero_product
           else:
-            nums[i] = PRODUCT // nums[i]
+            nums[i] = product // nums[i]
 
         return nums
