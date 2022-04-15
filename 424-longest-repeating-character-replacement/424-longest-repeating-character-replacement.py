@@ -10,13 +10,11 @@ class Solution:
           hashmap[s[right]] += 1
           subString += s[right]
           maxHash = max(hashmap, key=hashmap.get)
-          if len(subString) - hashmap[maxHash] <= k:
-            right += 1
-          else:
+          if len(subString) - hashmap[maxHash] > k:
             subString = subString[1:]
             hashmap[s[left]] -= 1
             left += 1
-            right += 1
+          right += 1
           counter = max(len(subString),counter)
 
         return counter
