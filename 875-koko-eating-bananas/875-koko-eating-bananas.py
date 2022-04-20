@@ -3,13 +3,11 @@ class Solution:
       left, right = 1, max(piles)
       while left < right:
         mid = (left + right) // 2
-        k = 0
-        for i in range(len(piles)):
-          k += math.ceil(piles[i] / mid)
-        
-        if k <= h:
+        count = 0
+        for pile in piles:
+          count += math.ceil(pile/mid)
+        if count <= h:
           right = mid
         else:
           left = mid + 1
-          
       return right
