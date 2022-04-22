@@ -12,4 +12,5 @@ class Solution:
             curr.next = prev
             prev = curr
             curr = nextNode
+
         return prev 
