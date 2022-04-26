@@ -10,10 +10,10 @@ class Solution:
         def dfs(root):
             nonlocal res
             if not root:
-                return -1
+                return 0
             right = dfs(root.right)
             left = dfs(root.left)
-            res = max(res, 2 + left + right)
+            res = max(res, left + right)
             
             return 1 + max(left, right)
         dfs(root)
