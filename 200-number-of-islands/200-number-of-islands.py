@@ -5,25 +5,24 @@ class Solution:
         
         rows = len(grid)
         cols = len(grid[0])
+        res = 0
         visited = set()
-        islands = 0
-        
-        def bfs(r, c):
-            q = collections.deque()
-            visited.add((r, c))
-            q.append((r, c))
+        def bfs(grid, i, j):
+            q = collections.deque([(i , j)])
+            visited.add((i,j))
             while q:
-                row, col = q.pop()
-                directions = [[1,0],[-1,0],[0,1],[0,-1]]
-                for dr,dc in directions:
-                    r, c = row + dr, col + dc
-                    if (r in range(rows) and c in range(cols) and grid[r][c] == '1' and (r, c) not in visited):
-                        q.append((r, c))
-                        visited.add((r, c))
-
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c] == '1' and (r, c) not in visited:
-                    bfs(r,c)
-                    islands += 1
-        return islands
+                r, c = q.pop()
+                dirs = [[1,0], [0,1], [0,-1], [-1, 0]]            
+                for dr, dc in dirs:
+                    row = r + dr
+                    col = c + dc
+                    if row < rows and row >= 0 and col < cols and col >= 0 and grid[row][col] == '1' and (row, col) not in visited:
+                        visited.add((row, col))
+                        q.append((row, col))
+                 
+        for i in range(rows):
+            for j in range(cols):
+                if grid[i][j] == '1' and (i, j) not in visited:
+                    bfs(grid, i, j)
+                    res += 1
+        return res
