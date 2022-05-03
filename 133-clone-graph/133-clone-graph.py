@@ -12,16 +12,17 @@ class Solution:
             return node
         
         visited = {}
-        
-        queue = collections.deque([node])
+        q = collections.deque([node])
         visited[node] = Node(node.val, [])
         
-        while queue:
-            n = queue.popleft()
-            for neighbor in n.neighbors:
-                if neighbor not in visited:
-                    visited[neighbor] = Node(neighbor.val, [])
-                    queue.append(neighbor)
-                visited[n].neighbors.append(visited[neighbor])
+        while q:
+            n = q.popleft()
+            if n.neighbors:
+                for neighbor in n.neighbors:
+                    if neighbor not in visited:
+                        visited[neighbor] = Node(neighbor.val, [])
+                        q.append(neighbor)
+                    visited[n].neighbors.append(visited[neighbor])
+            
         return visited[node]
-                
+        
