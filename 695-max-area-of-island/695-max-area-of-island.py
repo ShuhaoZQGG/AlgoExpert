@@ -30,6 +30,5 @@ class Solution:
         for i in range(rows):
             for j in range(cols):
                 if grid[i][j] == 1 and (i, j) not in visited:
-                    curr = 0
                     bfs(grid, i, j)
         return res
