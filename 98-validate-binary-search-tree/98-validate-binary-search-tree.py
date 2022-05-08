@@ -8,15 +8,13 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         if not root:
             return True
-        
         queue = collections.deque([(root, -math.inf, math.inf)])
         while queue:
-            node, lower, upper = queue.pop()
+            node, lower, higher = queue.popleft()
             if not node:
                 continue
-            if node.val <= lower or node.val >= upper:
+            if node.val <= lower or node.val >= higher:
                 return False
             queue.append((node.left, lower, node.val))
-            queue.append((node.right, node.val, upper))
+            queue.append((node.right, node.val, higher))
         return True
-        
