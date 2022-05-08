@@ -19,3 +19,4 @@ class Solution:
             queue.append((node.left, lower, node.val))
             queue.append((node.right, node.val, upper))
         return True
+        
