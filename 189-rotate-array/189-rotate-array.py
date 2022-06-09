@@ -3,9 +3,12 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        if k > len(nums):
-            k = k % len(nums)
-        while k > 0:
-            nums.insert(0, nums.pop())
-            k -= 1
-        
+        def reverse(lst, l, r):
+            while l < r:
+                lst[l], lst[r] = lst[r], lst[l]
+                l += 1
+                r -= 1
+        k = k % len(nums)
+        reverse(nums, 0, len(nums) - 1)
+        reverse(nums, 0, k - 1)
+        reverse(nums, k, len(nums) - 1)
