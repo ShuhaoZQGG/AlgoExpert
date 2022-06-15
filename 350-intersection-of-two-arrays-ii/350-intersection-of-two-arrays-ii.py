@@ -8,13 +8,13 @@ class Solution:
 
         hm = dict()
         
-        for i in range(len(nums1)):
-            if nums1[i] not in hm:
-                hm[nums1[i]] = 0
-            hm[nums1[i]] += 1
-        
         for i in range(len(nums2)):
-            if nums2[i] in hm and hm[nums2[i]] > 0:
-                hm[nums2[i]] -= 1
-                res.append(nums2[i])
+            if nums2[i] not in hm:
+                hm[nums2[i]] = 0
+            hm[nums2[i]] += 1
+        
+        for i in range(len(nums1)):
+            if nums1[i] in hm and hm[nums1[i]] > 0:
+                hm[nums1[i]] -= 1
+                res.append(nums1[i])
         return res
