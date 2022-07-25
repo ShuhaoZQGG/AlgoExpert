@@ -1,23 +1,18 @@
-class Node:
-    def __init__(self, value=None):
-        self.val = value
-        self.next = math.inf
-        
+
 class KthLargest:
 
     def __init__(self, k: int, nums: List[int]):
-        self.heap, self.k = nums, k
-        heapq.heapify(self.heap)
+        self.k = k
+        self.heap = nums
+        heapq.heapify(nums)
         while len(self.heap) > k:
             heapq.heappop(self.heap)
 
     def add(self, val: int) -> int:
         heapq.heappush(self.heap, val)
-        if len(self.heap) > self.k:
+        if self.k < len(self.heap):
             heapq.heappop(self.heap)
         return self.heap[0]
-            
-        
         
 
 
