@@ -2,9 +2,9 @@ class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         N = 9
         
-        rows = [[] for _ in range(N)]
-        cols = [[] for _ in range(N)]
-        boxes = [[] for _ in range(N)]
+        rows = [set() for _ in range(N)]
+        cols = [set() for _ in range(N)]
+        boxes = [set() for _ in range(N)]
         
         for i in range(N):
             for j in range(N):
@@ -15,16 +15,16 @@ class Solution:
                 
                 if val in rows[i]:
                     return False
-                rows[i].append(val)
+                rows[i].add(val)
             
                 if val in cols[j]:
                     return False
-                cols[j].append(val)
+                cols[j].add(val)
                 
                 idx = (i // 3) * 3 + j // 3
                 if val in boxes[idx]:
                     return False
-                boxes[idx].append(val)
+                boxes[idx].add(val)
         print(rows)
         print(cols)
         print(boxes)
