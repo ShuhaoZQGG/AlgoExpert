@@ -8,21 +8,20 @@ class Solution:
         
         for i in range(N):
             for j in range(N):
-                val = board[i][j]
-                
-                if val == '.':
+                if board[i][j] == '.':
                     continue
+                    
+                if board[i][j] in rows[i]:
+                    return False
+                rows[i].append(board[i][j])
                 
-                if val in rows[i]:
+                if board[i][j] in cols[j]:
                     return False
-                rows[i].append(val)
-            
-                if val in cols[j]:
-                    return False
-                cols[j].append(val)
+                cols[j].append(board[i][j])
                 
                 idx = (i // 3) * 3 + j // 3
-                if val in boxes[idx]:
+                if board[i][j] in boxes[idx]:
                     return False
-                boxes[idx].append(val)
+                boxes[idx].append(board[i][j])
+        
         return True
