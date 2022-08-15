@@ -10,7 +10,7 @@ class Solution:
     def preorder(self, root: 'Node') -> List[int]:
         if root is None:
             return []
-        stack, output = [root,], []
+        stack, output = [root], []
         while stack:
             node = stack.pop()
             output.append(node.val)
