@@ -6,7 +6,7 @@ class Solution:
             if nums[middle] == target:
                 return middle
             elif nums[middle] < target:
-                l += 1
+                l = middle + 1
             else:
-                r -= 1
+                r = middle - 1
         return -1
