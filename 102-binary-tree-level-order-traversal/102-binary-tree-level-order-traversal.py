@@ -9,16 +9,16 @@ class Solution:
         if root is None:
             return []
         res = []
-        stack = collections.deque([root])
         level = 0
-        while stack:
+        queue = collections.deque([root])
+        while queue:
             res.append([])
-            for i in range(len(stack)):
-                node = stack.popleft()
+            for i in range(len(queue)):
+                node = queue.popleft()
                 res[level].append(node.val)
                 if node.left:
-                    stack.append(node.left)
+                    queue.append(node.left)
                 if node.right:
-                    stack.append(node.right)
+                    queue.append(node.right)
             level += 1
         return res
