@@ -9,7 +9,6 @@ class Solution:
         if root is None:
             return []
         res = []
-        level = 0
         queue = collections.deque([root])
         while queue:
             level = []
