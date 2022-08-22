@@ -2,24 +2,24 @@ class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         if not grid:
             return 0
-        res = 0
+        islands = 0
+        queue = collections.deque()
         visited = set()
-        rows = len(grid)
-        cols = len(grid[0])
-        
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c] == '1' and (r,c) not in visited:
-                    res += 1
-                    stack = [(r, c)]
-                    visited.add((r,c))
-                    dirs = [[1,0],[0,1],[-1,0],[0,-1]]
-                    while stack:
-                        r0, c0 = stack.pop()
-                        for dr, dc in dirs:
-                            row = r0 + dr
-                            col = c0 + dc
-                            if row in range(rows) and col in range(cols) and grid[row][col] == '1' and (row, col) not in visited:
-                                stack.append((row,col))
-                                visited.add((row,col))
-        return res
+        def dfs(i, j):
+            queue.append((i, j))
+            visited.add((i, j))
+            dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+            while queue:
+                row, col = queue.popleft()
+                for dr, dc in dirs:
+                    Row, Col = dr + row, dc + col
+                    if Row in range(len(grid)) and Col in range(len(grid[0])) and grid[Row][Col] == '1' and (Row, Col) not in visited :
+                        queue.append((Row, Col))
+                        visited.add((Row, Col))
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == '1' and (i, j) not in visited:
+                    dfs(i,j)
+                    islands += 1
+        return islands
+            
