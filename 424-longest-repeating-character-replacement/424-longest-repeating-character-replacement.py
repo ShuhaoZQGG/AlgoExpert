@@ -7,7 +7,7 @@ class Solution:
         while l < len(s):
             counter[s[r]] += 1
             maxF = max(maxF, counter[s[r]])
-            if res - maxF < k:
+            if r - l - maxF + 1 <= k:
                 res += 1
             else:
                 counter[s[l]] -= 1
