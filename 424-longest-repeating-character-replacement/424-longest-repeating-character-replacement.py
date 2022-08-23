@@ -3,11 +3,16 @@ class Solution:
         counter = collections.Counter()
         maxF = 0
         res = 0 
-        for i in range(len(s)):
-            counter[s[i]] += 1
-            maxF = max(maxF, counter[s[i]])
+        l, r = 0, 0
+        while l < len(s):
+            counter[s[r]] += 1
+            maxF = max(maxF, counter[s[r]])
             if res - maxF < k:
                 res += 1
             else:
-                counter[s[i - res]] -=1
+                counter[s[l]] -= 1
+                l += 1
+            if r == len(s) - 1 and r - l <= res:
+                return res
+            r += 1
         return res
