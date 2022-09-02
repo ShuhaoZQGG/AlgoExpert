@@ -13,5 +13,4 @@ class Solution:
             prev = curr
             curr = nextCurr
         return prev
-             
             
