@@ -16,6 +16,6 @@ class Solution:
                 list2 = list2.next
             prev = prev.next
             
-        prev.next = list1 if list2 is None else list2
+        prev.next = list1 if list1 is not None else list2
         
         return dummy.next
