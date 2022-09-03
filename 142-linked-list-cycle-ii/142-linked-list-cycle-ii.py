@@ -6,21 +6,21 @@
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        ptr1, ptr2 = head, self.detectIntersect(head)
+        ptr1 = head
+        ptr2 = self.detectIntersect(head)
         if ptr2 is None:
             return None
-        
-        while ptr1 != ptr2:
-            ptr1 = ptr1.next
-            ptr2 = ptr2.next
-            
+        else:
+            while ptr1 != ptr2:
+                ptr1 = ptr1.next
+                ptr2 = ptr2.next
         return ptr1
     
-    def detectIntersect(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def detectIntersect(self, head):
         slow, fast = head, head
-        while fast is not None and fast.next is not None:
+        while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-            if fast == slow:
+            if slow == fast:
                 return slow
         return None
