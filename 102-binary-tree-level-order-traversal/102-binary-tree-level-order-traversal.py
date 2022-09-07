@@ -12,6 +12,7 @@ class Solution:
         stack = collections.deque([root])
         res = []
         level = 0
+        
         while stack:
             res.append([])
             for i in range(len(stack)):
@@ -23,3 +24,4 @@ class Solution:
                     stack.append(node.right)
             level += 1
         return res
+        
