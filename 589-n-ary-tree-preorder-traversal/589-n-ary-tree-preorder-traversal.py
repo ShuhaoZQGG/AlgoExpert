@@ -14,6 +14,8 @@ class Solution:
         stack = [root]
         while stack:
             node = stack.pop()
-            res.append(node.val)
-            stack.extend(node.children[::-1])
+            if node:
+                res.append(node.val)
+                for i in range(len(node.children)-1, -1, -1):
+                    stack.append(node.children[i])
         return res
