@@ -1,19 +1,20 @@
 class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
-        dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-        stack=[(sr, sc)]
-        initialColor = image[sr][sc]
+        dirs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        stack = [(sr, sc)]
         visited = set()
+        initial = image[sr][sc]
+        row_length = len(image)
+        col_length = len(image[0])
         while stack:
             row, col = stack.pop()
-            if image[row][col] == initialColor:
+            if image[row][col] == initial:
                 image[row][col] = color
             visited.add((row, col))
-            for dir in dirs:
-                dr, dc = dir
-                Row = dr + row
-                Col = dc + col
-                if Row >= 0 and Row < len(image) and Col >= 0 and Col < len(image[0]) and (Row, Col) not in visited and image[Row][Col] == initialColor:
-                    stack.append((Row, Col))
-                    visited.add((Row, Col))
+            for dr, dc in dirs:
+                ROW = dr + row
+                COL = dc + col
+                if ROW in range(row_length) and COL in range(col_length) and (ROW, COL) not in visited and image[ROW][COL] == initial:
+                    stack.append((ROW, COL))
+                    visited.add((ROW, COL))
         return image
