@@ -8,17 +8,12 @@ class Solution:
         if n == 1:
             return dp[n]
         
-        while n >= 2:
-            if counter % 2 == 0:
-                dp[0] = dp[0] + dp[1]
-            else:
-                dp[1] = dp[0] + dp[1]
-            n -= 1
-            counter += 1
+        for i in range(n):
+            dp[i % 2] = dp[0] + dp[1]
             
-        if counter%2 == 0:
-            return dp[1]
-        else:
+        if n % 2 == 0:
             return dp[0]
+        else:
+            return dp[1]
         
         
