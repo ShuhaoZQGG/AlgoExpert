@@ -1,25 +1,28 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        if not grid:
-            return 0
-        islands = 0
-        stack = []
-        visited = set()
-        def dfs(i, j):
-            stack.append((i, j))
-            visited.add((i, j))
-            dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        visited = set((0,0))
+        ans = 0
+        
+        def dfs(r, c):
+            stack = [(r,c)]
             while stack:
-                row, col = stack.pop()
-                for dr, dc in dirs:
-                    Row, Col = dr + row, dc + col
-                    if Row in range(len(grid)) and Col in range(len(grid[0])) and grid[Row][Col] == '1' and (Row, Col) not in visited :
-                        stack.append((Row, Col))
-                        visited.add((Row, Col))
+                    row, col = stack.pop()
+                    for dr, dc in dirs:
+                        ROW = dr + row
+                        COL = dc + col
+                        if ROW in range(len(grid)) and COL in range(len(grid[0])) and grid[ROW][COL] == "1" and (ROW, COL) not in visited:
+                            stack.append((ROW, COL))
+                            visited.add((ROW, COL))
+                            
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                if grid[i][j] == '1' and (i, j) not in visited:
-                    dfs(i,j)
-                    islands += 1
-        return islands
+                if (i, j) not in visited and grid[i][j] == "1":
+                    dfs(i, j)
+                    ans += 1
+                    
+                
+        return ans
+                    
+                
             
