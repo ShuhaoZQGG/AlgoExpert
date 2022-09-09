@@ -7,6 +7,7 @@ class Solution:
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if (i, j) not in visited and grid[i][j] == "1":
+                    ans += 1
                     stack = [(i,j)]
                     while stack:
                             row, col = stack.pop()
@@ -16,7 +17,6 @@ class Solution:
                                 if ROW in range(len(grid)) and COL in range(len(grid[0])) and grid[ROW][COL] == "1" and (ROW, COL) not in visited:
                                     stack.append((ROW, COL))
                                     visited.add((ROW, COL))                    
-                    ans += 1
                     
                 
         return ans
