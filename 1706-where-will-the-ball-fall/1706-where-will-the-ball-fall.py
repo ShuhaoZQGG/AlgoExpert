@@ -11,14 +11,11 @@ class Solution:
                         col += 1
                         if col not in range(len(grid[0])) or grid[row][col] == -1 :
                             return -1
-                        if row in range(len(grid)) and col in range(len(grid[0])):
-                            stack.append((row, col))
-                    elif grid[row][col] == -1:
+                    else:
                         col -= 1
                         if col not in range(len(grid[0])) or grid[row][col] == 1:
                             return -1
-                        if row in range(len(grid)) and col in range(len(grid[0])):
-                            stack.append((row, col))
+                    stack.append((row, col))
                 else:
                     horizontal = not horizontal
                     row += 1
